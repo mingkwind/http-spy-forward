@@ -46,7 +46,9 @@ GLOBAL OPTIONS:
 ./http-spy-forward start -i en0 -f "dst host 192.168.14.62" -u "http://127.0.0.1:8080" -d
 ```
 
-上面这个服务是接收en0网口的流量，并过滤目的host为192.168.14.62的流量，识别其中的http流量，将其中的http请求信息转发至http://127.0.0.1:8080，转发的方式为转发请求到`http://127.0.0.1:8080+URI`，并在header中添加`X-Real-Ip:ip.src`
+上面这个服务是接收en0网口的流量，并过滤目的host为192.168.14.62的流量，识别其中的http流量，将其中的http请求信息转发至http://127.0.0.1:8080
+
+转发的方式为转发请求到`http://127.0.0.1:8080+URI`，并在header中添加`X-Real-Ip:ip.src`
 
 ![image-20220630144205958](README/image-20220630144205958.png)
 
