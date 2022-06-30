@@ -1,6 +1,7 @@
 package forward
 
 import (
+	"http-spy-forward/logger"
 	"http-spy-forward/models"
 	"http-spy-forward/vars"
 	"net/http"
@@ -26,15 +27,21 @@ func Forward(httpReq *models.HttpReq) {
 		// req, _ := http.NewRequest("GET", "http://httpbin.org/get", nil)
 		req, _ := http.NewRequest("GET", vars.TargetURL+httpReq.RequestURI, nil)
 		req.Header = header
-		resp, _ := client.Do(req)
+		resp, err := client.Do(req)
 		_ = resp
+		if err != nil {
+			logger.Log.Error("Forward GET error:", err)
+		}
 		//body, _ := ioutil.ReadAll(resp.Body)
 		//fmt.Println(string(body))
 	case "POST":
 		req, _ := http.NewRequest("POST", vars.TargetURL+httpReq.RequestURI, strings.NewReader(httpReq.Body))
 		req.Header = header
-		resp, _ := client.Do(req)
+		resp, err := client.Do(req)
 		_ = resp
+		if err != nil {
+			logger.Log.Error("Forward POST error:", err)
+		}
 		//body, _ := ioutil.ReadAll(resp.Body)
 		//fmt.Println(string(body))
 	}

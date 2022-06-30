@@ -14,5 +14,5 @@ func init() {
 	logger.Formatter = new(prefixed.TextFormatter)
 	logger.Level = logrus.InfoLevel
 	// 添加前缀
-	Log = logger.WithFields(logrus.Fields{"prefix": "webspy"})
+	Log = logger.WithFields(logrus.Fields{"prefix": "http-spy-forward"})
 }
