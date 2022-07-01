@@ -17,7 +17,7 @@ import (
 )
 
 var (
-	snapshotLen int32 = 10240
+	snapshotLen int32 = 1024
 	promiscuous bool  = true
 	err         error
 	timeout     time.Duration = pcap.BlockForever
