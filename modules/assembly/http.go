@@ -43,7 +43,7 @@ func (h *httpStreamFactory) New(net, transport gopacket.Flow) tcpassembly.Stream
 func (h *httpStream) run() {
 	// 创建一个bufio.Reader用于读取重组完成的http请求
 	buf := bufio.NewReader(&h.r)
-	//
+	// 读取http请求
 	for {
 		// 读取gopacket中的http请求
 		req, err := http.ReadRequest(buf)
